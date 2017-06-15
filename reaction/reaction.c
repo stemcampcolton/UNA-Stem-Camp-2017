@@ -14,6 +14,7 @@ int main()                                    // Main function
   int interval;
   float averageScore = 0;
   int rounds = 0;
+  int best = 1500;
   
   srand(CNT);
   
@@ -49,9 +50,14 @@ int main()                                    // Main function
    
   if (timeCounter > 0)
   {
-   print("Your time was %d ms.\n", timeCounter);
-   averageScore = averageScore + timeCounter; 
    rounds = rounds + 1;
+   averageScore = averageScore + timeCounter;
+   print("Your time was %d ms.\n", timeCounter);
+   
+   if (timeCounter < best)
+   {
+    best = timeCounter; 
+   }     
   }
   else
   {
@@ -64,6 +70,7 @@ int main()                                    // Main function
  
  averageScore = averageScore / rounds;
  print("Goodbye! Your average score was %0.2 ms.\n", averageScore);
+ print("Your best time was %d ms. \n", best);
  
  return 0;
 }
